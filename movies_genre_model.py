@@ -18,14 +18,17 @@ def build(ratio, epochs,batch_size,
           x_train=None, y_train=None, x_validation=None, y_validation=None):
 
     print(' x_train shape: ', x_train.shape)
+    print(' y_train shape: ', y_train.shape)
     print(x_train.shape[0], 'train samples')
     print(x_validation.shape[0], 'validation samples')
+    print(' x_valditaion shape: ', x_validation.shape)
+    print(' y_validation shape: ', y_validation.shape)
 
     #build model
     num_classes = len(y_train[0])
 
 
-    model2 = Sequential([
+    model = Sequential([
         Conv2D(24, (5, 5), padding='same', input_shape=x_train.shape[1:], activation='relu'),
         Conv2D(24, (5, 5), activation='relu'),
         MaxPooling2D(pool_size=(2, 2)),
@@ -43,7 +46,7 @@ def build(ratio, epochs,batch_size,
 
     ])
 
-    model = Sequential([
+    model2 = Sequential([
         Conv2D(24, (3, 3), input_shape=x_train.shape[1:], activation='relu', padding='same'),
         Conv2D(24, (3, 3), activation='relu', padding='same'),
         Conv2D(24, (3, 3), activation='relu', padding='same'),

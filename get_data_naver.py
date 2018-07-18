@@ -5,7 +5,7 @@ from pathlib import Path
 import glob
 from PIL import Image
 
-csv_file_path = 'datas/MovieGenreFromNaver.csv'
+csv_file_path = 'datas/MovieGenreFromNaver_2000.csv'
 poster_file_path = 'datas/images/Naver/'
 
 
@@ -15,7 +15,7 @@ def download(df):
 
     for poster_url in df_poster:
         try:
-            file_name = poster_file_path + str(i) + '.jpg'
+            file_name = poster_file_path + '100/'+ str(i) + '.jpg'
             my_file = Path(file_name)
             if my_file.is_file():
                 print('file already exist')

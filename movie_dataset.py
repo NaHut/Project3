@@ -41,7 +41,7 @@ def naver_load_genre_data(path):
     label_list = []
 
 
-    df = pd.read_csv('datas/MovieGenreFromNaver.csv', encoding="UTF-8")
+    df = pd.read_csv('datas/MovieGenreFromNaver_2000.csv', encoding="UTF-8")
 
     path = path + '*.jpg'
     i =0
@@ -65,9 +65,9 @@ def naver_load_genre_data(path):
     label_list = np.array(label_list, dtype='float32')
     # print(label_list.shape)
     # print(image_list.shape)
-    print(label_num)
-    for i in range(15):
-        label_num[i] = 0
+    # print(label_num)
+    # for i in range(15):
+    #     label_num[i] = 0
 
 
 
@@ -75,46 +75,42 @@ def naver_load_genre_data(path):
 
 
 def get_label(genres):
-    result = np.zeros(15)
+    result = np.zeros(6)
     genres = str(genres).split('|', 5)
 
     for genre in genres:
         if genre == 'Comedy':
-            result[0] = 1
-        elif genre == 'Action':
-            result[1] = 1
-        elif genre == 'Animation':
-            result[2] = 1
-        elif genre == 'Romance':
             result[3] = 1
-        elif genre == 'Adventure':
-            result[4] = 1
-        elif genre == 'Horror':
+        elif genre == 'Action':
             result[5] = 1
-        elif genre == 'Sci-Fi':
-            result[6] = 1
+        elif genre == 'Animation':
+            result[4] = 1
+        elif genre == 'Romance':
+            result[1] = 1
+        elif genre == 'Adventure':
+            result[5] = 1
+        elif genre == 'Horror':
+            result[2] = 1
+        elif genre == 'SF':
+            result[0] = 1
         elif genre == 'Crime':
-            result[7] = 1
+            result[2] = 1
         elif genre == 'Thriller':
-            result[8] = 1
-        elif genre == 'Documentary':
-            result[9] = 1
-        elif genre == 'Sport':
-            result[10] = 1
-        elif genre == 'Adult':
-            result[11] = 1
+            result[2] = 1
         elif genre == 'Mystery':
-            result[12] = 1
+            result[2] = 1
         elif genre == 'Drama':
-            result[13] = 1
+            result[1] = 1
         elif genre == 'Fantasy':
-            result[14] = 1
+            result[0] = 1
+        else:
+            print(genre)
 
     return result
 
 
 def naver_get_label(genres):
-    result = np.zeros(15)
+    result = np.zeros(6)
     genres = genres.split('[', 1)
     genres = genres[1].split(']', 1)
     genres = genres[0].split(' ', 6)
@@ -122,52 +118,35 @@ def naver_get_label(genres):
         item = genre.split('\'', 2)
 
         if item[1] == 'Comedy':
-            result[0] = 1
-            label_num[0] += 1;
-        elif item[1] == 'Action':
-            result[1] = 1
-            label_num[1] += 1;
-        elif item[1] == 'Animation':
-            result[2] = 1
-            label_num[2] += 1;
-        elif item[1] == 'Romance':
             result[3] = 1
-            label_num[3] += 1;
-        elif item[1] == 'Adventure':
-            result[4] = 1
-            label_num[4] += 1;
-        elif item[1] == 'Horror':
+        elif item[1] == 'Action':
             result[5] = 1
-            label_num[5] += 1;
+        elif item[1] == 'Animation':
+            result[4] = 1
+        elif item[1] == 'Romance':
+            result[1] = 1
+        elif item[1] == 'Adventure':
+            result[5] = 1
+        elif item[1] == 'Horror':
+            result[2] = 1
         elif item[1] == 'SF':
-            result[6] = 1
-            label_num[6] += 1;
+            result[0] = 1
         elif item[1] == 'Crime':
-            result[7] = 1
-            label_num[7] += 1;
+            result[2] = 1
         elif item[1] == 'Thriller':
-            result[8] = 1
-            label_num[8] += 1;
-        elif item[1] == 'Documentary':
-            result[9] = 1
-            label_num[9] += 1;
+            result[2] = 1
         elif item[1] == 'War':
-            result[10] = 1
-            label_num[10] += 1;
+            result[2] = 1
         elif item[1] == 'Family':
-            result[11] = 1
-            label_num[11] += 1;
+            result[3] = 1
         elif item[1] == 'Mystery':
-            result[12] = 1
-            label_num[12] += 1;
+            result[2] = 1
         elif item[1] == 'Drama':
-            result[13] = 1
-            label_num[13] += 1;
+            result[1] = 1
         elif item[1] == 'Fantasy':
-            result[14] = 1
-            label_num[14] += 1;
+            result[0] = 1
         # else:
-            # print(item[1])
+        #     print(item[1])
     return result
 
 
