@@ -117,34 +117,18 @@ def naver_get_label(genres):
     for genre in genres:
         item = genre.split('\'', 2)
 
-        if item[1] == 'Comedy':
+        if item[1] == 'SF' or 'Fantasy':
+            result[0] = 1
+        elif item[1] == 'Drama' or 'Romance':
+            result[1] = 1
+        elif item[1] == 'Thriller' or 'War' or 'Crime' or 'Mystery' or 'Horror':
+            result[2] = 1
+        elif item[1] == 'Comedy' or 'Family':
             result[3] = 1
-        elif item[1] == 'Action':
-            result[5] = 1
         elif item[1] == 'Animation':
             result[4] = 1
-        elif item[1] == 'Romance':
-            result[1] = 1
-        elif item[1] == 'Adventure':
+        elif item[1] == 'Action' or 'Adventure':
             result[5] = 1
-        elif item[1] == 'Horror':
-            result[2] = 1
-        elif item[1] == 'SF':
-            result[0] = 1
-        elif item[1] == 'Crime':
-            result[2] = 1
-        elif item[1] == 'Thriller':
-            result[2] = 1
-        elif item[1] == 'War':
-            result[2] = 1
-        elif item[1] == 'Family':
-            result[3] = 1
-        elif item[1] == 'Mystery':
-            result[2] = 1
-        elif item[1] == 'Drama':
-            result[1] = 1
-        elif item[1] == 'Fantasy':
-            result[0] = 1
         # else:
         #     print(item[1])
     return result
